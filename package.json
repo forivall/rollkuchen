@@ -1,0 +1,32 @@
+{
+  "name": "rollkuchen",
+  "version": "0.0.0",
+  "description": "like falafel or burrito, but to transform coffeescript",
+  "main": "./lib/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "coffee --bare -j -o lib/index.js -i src/index.coffee",
+    "//build-coffee1-notes": "coffeescript 1 has better for loop support currently",
+    "build-coffee1": "\"$(npm -g root)/coffee-script/bin/coffee\" --bare -o lib -c src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/forivall/rollkuchen.git"
+  },
+  "author": {
+    "name": "Jordan Klassen",
+    "email": "forivall@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forivall/rollkuchen/issues"
+  },
+  "homepage": "https://github.com/forivall/rollkuchen",
+  "dependencies": {
+    "coffee-script-redux": "git+https://github.com/michaelficarra/CoffeeScriptRedux.git#master",
+    "cscodegen": "git+https://github.com/michaelficarra/cscodegen.git#master"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
