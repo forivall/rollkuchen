@@ -1,10 +1,22 @@
 CS = require 'coffee-script-redux'
 cscodegen = require 'cscodegen'
 
+fixRange = (node, chunks) ->
+  i = 0
+  line = 1
+  while line < node.line and i < chunks.length
+    if chunks[i] is '\n' then line += 1
+    i += 1
+  if i < chunks.length
+    i = i + node.column - 1
+  return [i, i + node.raw.length]
+
 insertHelpers = (node, parent, chunks) ->
   if not node.range then return
 
-  node.parent = parent;
+  # todo: figure out how to get csr to return the range properly; submit a patch?
+  node.rawRange = node.range
+  try node.range = fixRange(node, chunks)
 
   node.source = -> return chunks.slice(node.range[0], node.range[1]).join('')
 
